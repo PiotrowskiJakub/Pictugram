@@ -1,1 +1,9 @@
 %h1 Pictugram
+
+%table
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td= post.caption
+      %tr
+        %td= image_tag post.image.url(:medium)
