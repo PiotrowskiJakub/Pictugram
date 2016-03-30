@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_path
+    redirect_to @post, notice: "Successfully created new post"
   end
 
   def edit
@@ -26,6 +26,11 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to root_path, notice: "Successfully deleted post"
   end
 
   private
