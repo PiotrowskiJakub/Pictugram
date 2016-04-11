@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
-gem 'sqlite3'
+gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'uglifier', '>= 1.3.0'
@@ -15,6 +15,7 @@ gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'rb-readline', '~> 0.5.3'
 gem 'devise'
 gem 'html2haml', '~> 2.0'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'
@@ -27,3 +28,5 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
+ruby "2.3.0"
