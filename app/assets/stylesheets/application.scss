@@ -96,13 +96,16 @@ body {
     color: #125688;
     font-size: 15px;
   }
+  .caption-content {
+    border-bottom: 1px solid #EEEFEF;
+    padding-bottom: 4px;
+    margin-bottom: 7px;
+  }
   .user-name, .caption-content {
     display: inline;
   }
-  .comment {
+  #comment {
     margin-top: 7px;
-    border-top: 1px solid #EEEFEF;
-    padding-top: 7px;
     .user-name {
       font-weight: 500;
       margin-right: 0.3em;
