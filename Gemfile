@@ -16,7 +16,7 @@ gem 'rb-readline', '~> 0.5.3'
 gem 'devise'
 gem 'html2haml', '~> 2.0'
 gem 'rails_12factor', group: :production
-gem 'aws-sdk', group: :production
+gem 'aws-sdk-v1'
 
 group :development, :test do
   gem 'byebug'
