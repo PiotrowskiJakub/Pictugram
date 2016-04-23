@@ -16,6 +16,17 @@ module AuthHelpers
     fill_in 'Password', with: user.password
     click_button 'Log in'
   end
+
+  def sign_again_with (user)
+    click_link 'Logout'
+    sign_in_with user
+  end
+
+  def display_post_as_new_user (user, post)
+    sign_again_with user
+    find(:xpath, "//a[contains(@href, 'posts/#{post.id}')]").click
+  end
+
 end
 
 RSpec.configure do |config|

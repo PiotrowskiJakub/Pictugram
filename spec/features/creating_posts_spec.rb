@@ -1,9 +1,9 @@
-require 'rails_helper.rb'
+require 'rails_helper'
 
 feature 'Creating posts' do
   background do
-    user = create(:user)
-    sign_in_with user
+    @user = create(:user)
+    sign_in_with @user
 
     visit '/'
     click_link 'New Post'
@@ -15,6 +15,7 @@ feature 'Creating posts' do
     click_button 'Create Post'
     expect(page).to have_content('#breathtaking')
     expect(page).to have_css("img[src*='mountains.jpg']")
+    expect(page).to have_content(@user.user_name)
   end
 
   it 'needs an image to create a post' do

@@ -142,6 +142,11 @@ body {
   border-top: 1px solid #EEEFEF;
   flex-direction: row;
   justify-content: center;
+
+  button {
+    border: none;
+    background-color: white;
+  }
 }
 
 /* ## Wrapper and styling for the new and edit views ## */

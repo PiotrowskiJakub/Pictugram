@@ -24,3 +24,5 @@
         .comment-form.col-sm-11
           = form_for([post, post.comments.build], remote: true) do |f|
             = f.text_field :content, placeholder: 'Add a comment...', class: "comment-content", id: "comment_content_#{post.id}"
+            = button_tag(id: "add_comment") do
+              %span(class="glyphicon glyphicon-send")
