@@ -1,11 +1,15 @@
 require 'rails_helper'
 
 feature 'Index displays a list of posts' do
-  scenario 'the index displays correct created job information' do
-    job_one = create(:post, caption: "This is the first post")
-    job_two = create(:post, caption: "This is the second post")
+  background do
+    user = create(:user)
+    post_one = create(:post, caption: "This is the first post", user_id: user.id)
+    post_two = create(:post, caption: "This is the second post", user_id: user.id)
 
-    visit '/'
+    sign_in_with user
+  end
+
+  scenario 'the index displays correct created job information' do
     expect(page).to have_content("This is the first post")
     expect(page).to have_content("This is the second post")
     expect(page).to have_css("img[src*='mountains']")

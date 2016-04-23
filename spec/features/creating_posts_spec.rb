@@ -2,11 +2,14 @@ require 'rails_helper.rb'
 
 feature 'Creating posts' do
   background do
+    user = create(:user)
+    sign_in_with user
+
     visit '/'
     click_link 'New Post'
   end
 
-  scenario 'can create a job' do
+  scenario 'can create a post' do
     attach_file('Image', "spec/files/images/mountains.jpg")
     fill_in 'Caption', with: 'Beautiful view #travel #breathtaking #moments'
     click_button 'Create Post'

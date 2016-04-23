@@ -2,10 +2,12 @@ require 'rails_helper'
 
 feature 'Can delete a post' do
   background do
-    post = create(:post, caption: 'I will be deleted')
+    user = create(:user)
+    post = create(:post, caption: 'I will be deleted', user_id: user.id)
 
-    visit '/'
-    find(:xpath, "//a[contains(@href, 'posts/1')]").click
+    sign_in_with user
+
+    find(:xpath, "//a[contains(@href, 'posts/#{post.id}')]").click
   end
 
   scenario 'after click on delete button in post view' do

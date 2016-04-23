@@ -2,10 +2,12 @@ require 'rails_helper'
 
 feature 'Editing posts' do
   background do
-    post = create(:post)
+    user = create(:user)
+    post = create(:post, user_id: user.id)
 
-    visit '/'
-    find(:xpath, "//a[contains(@href, 'posts/1')]").click
+    sign_in_with user
+
+    find(:xpath, "//a[contains(@href, 'posts/#{post.id}')]").click
     click_link "Edit Post"
   end
 
