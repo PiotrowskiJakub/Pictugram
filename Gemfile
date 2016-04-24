@@ -17,6 +17,8 @@ gem 'devise'
 gem 'html2haml', '~> 2.0'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk-v1'
+gem 'kaminari', '~> 0.16.3'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'
