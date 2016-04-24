@@ -15,8 +15,12 @@
             = post.user&.user_name
           = post.caption
         .comments{id: "comments_#{post.id}"}
-          - if post.comments
-            = render post.comments, post: post
+          - if post.comments.any?
+            .paginator{id: "comments-paginator-#{post.id}"}
+              - unless post.comments.count <= 4
+                = link_to "View the other #{post.comments.count - 4} comments", post_comments_path(post), remote: true,
+                  class: 'more-comments', data: { post_id: "#{post.id}", type: "html" }
+            = render post.comments.first(4), post: post
     - if user_signed_in?
       .comment-like-form.row
         .like-button.col-sm-1

@@ -13,7 +13,7 @@ feature 'Editing posts' do
   end
 
   scenario 'can edit a post' do
-    fill_in 'Caption', with: "What a fancy pictugram!"
+    fill_in 'post_caption', with: "What a fancy pictugram!"
     click_button 'Update Post'
 
     expect(page).to have_content('Post updated!')
@@ -21,7 +21,7 @@ feature 'Editing posts' do
   end
 
   scenario 'can not update a post without an image' do
-    attach_file('Image', 'spec/files/mountains.zip')
+    attach_file('post_image', 'spec/files/mountains.zip')
     click_button 'Update Post'
 
     expect(page).to have_content('Update failed. Please check the form.')

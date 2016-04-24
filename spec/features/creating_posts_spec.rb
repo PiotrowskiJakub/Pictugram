@@ -10,8 +10,8 @@ feature 'Creating posts' do
   end
 
   scenario 'can create a post' do
-    attach_file('Image', "spec/files/images/mountains.jpg")
-    fill_in 'Caption', with: 'Beautiful view #travel #breathtaking #moments'
+    attach_file('post_image', "spec/files/images/mountains.jpg")
+    fill_in 'post_caption', with: 'Beautiful view #travel #breathtaking #moments'
     click_button 'Create Post'
     expect(page).to have_content('#breathtaking')
     expect(page).to have_css("img[src*='mountains.jpg']")
@@ -19,7 +19,7 @@ feature 'Creating posts' do
   end
 
   it 'needs an image to create a post' do
-    fill_in 'Caption', with: '#autumn #sun #leafs'
+    fill_in 'post_caption', with: '#autumn #sun #leafs'
     click_button 'Create Post'
     expect(page).to have_content("Your new post couldn't be created! Please check the form")
   end
