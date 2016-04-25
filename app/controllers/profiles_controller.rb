@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :find_user
+  before_action :authenticate_user!, except: :show
+  before_action :owned_profile, except: :show
 
   def show
     @posts = @user.posts.order(created_at: :desc)
@@ -23,6 +25,13 @@ class ProfilesController < ApplicationController
 
   def find_user
     @user = User.find_by(user_name: params[:user_name])
+  end
+
+  def owned_profile
+    unless current_user == @user
+      flash[:alert] = "That profile doesn't belong to you!"
+      redirect_to root_path
+    end
   end
 
   def profile_params
