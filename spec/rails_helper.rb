@@ -27,6 +27,15 @@ module AuthHelpers
     find(:xpath, "//a[contains(@href, 'posts/#{post.id}')]").click
   end
 
+  def prepare_users_and_posts
+    user = create(:user)
+    user_two = create(:user, email: 'anthony@gmail.com', user_name: 'antbu')
+    post = create(:post, user_id: user.id)
+    post_two = create(:post, caption: 'Second post', user_id: user_two.id)
+
+    sign_in_with(user)
+    visit '/'
+  end
 end
 
 RSpec.configure do |config|
